@@ -12,18 +12,18 @@ import { join } from "node:path";
 const here = new URL(".", import.meta.url).pathname;
 const GAMES = [
   {
-    dir: "conglomerat", name: "Conglomérat", short: "Conglomérat", version: "1.2.2",
+    dir: "conglomerat", name: "Conglomérat", short: "Conglomérat", version: "1.2.3",
     html: "/workspace/conglomerat/dist-offline/conglomerat-offline.html", icons: "/workspace/conglomerat/public",
     theme: "#0f2340", desc: "Bâtissez un conglomérat québécois : commerce, restauration, hôtellerie, industrie, médias et finance.",
   },
   {
-    dir: "tarifs", name: "Tarifs!", short: "Tarifs!", version: "3.1.2",
+    dir: "tarifs", name: "Tarifs!", short: "Tarifs!", version: "3.1.3",
     html: "/workspace/tarifs/dist-offline/tarifs-offline.html", icons: "/workspace/tarifs/public",
     theme: "#0e1317", desc: "Premier ministre du Canada face aux tarifs du président Grant.",
   },
   {
-    dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "13.5",
-    html: "/workspace/nordic-resources-v13.5.html", icons: "/workspace/nordic/public",
+    dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "13.6",
+    html: "/workspace/nordic-resources-v13.6.html", icons: "/workspace/nordic/public",
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
   },
 ];
@@ -39,7 +39,16 @@ const head = (g) => `
 <script>
   // PWA : service worker du dossier du jeu (portée distincte = application distincte).
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-    addEventListener("load", function () { navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(function () {}); });
+    addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js", { scope: "./", updateViaCache: "none" }).then(function (r) { r.update().catch(function () {}); }).catch(function () {});
+    });
+    // Nouvelle version active : recharger une seule fois (la partie est déjà enregistrée), jamais en boucle.
+    var hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!hadController) return;
+      try { if (sessionStorage.getItem("hss-sw-reload")) return; sessionStorage.setItem("hss-sw-reload", "1"); } catch (e) { return; }
+      location.reload();
+    });
   }
   // Sauvegardes protégées contre le ménage automatique du navigateur.
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}

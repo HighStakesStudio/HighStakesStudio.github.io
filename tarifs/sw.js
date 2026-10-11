@@ -1,5 +1,5 @@
-/* Service worker Tarifs! v3.1.2 — jeu hors ligne. */
-const CACHE = "hss-tarifs-ae99c6ca8d";
+/* Service worker Tarifs! v3.1.3 — jeu hors ligne. */
+const CACHE = "hss-tarifs-c8612e1809";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
