@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#0e1317"/>
+  <polygon points="50,8 57,21 64,17 62,38 73,27 77,35 89,32 84,47 91,51 71,65 74,73 53,69 53,90 47,90 47,69 26,73 29,65 9,51 16,47 11,32 23,35 27,27 38,38 36,17 43,21" fill="#d8372b" transform="translate(5 3) scale(0.9)"/>
+  <line x1="10" y1="60" x2="90" y2="60" stroke="#e9edf0" stroke-width="3.2" stroke-dasharray="7 5" stroke-linecap="round"/>
+  <text x="78" y="88" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="20" fill="#d9a441">%</text>
+</svg>

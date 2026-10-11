@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>High Stakes Studio — Jeux</title>
+<meta name="description" content="Les jeux de gestion de High Stakes Studio : Conglomérat, Tarifs! et Nordic Resources. Gratuits, en français, jouables sur téléphone." />
+<meta name="theme-color" content="#0b0b0b" />
+<link rel="icon" href="assets/studio-icone.png" type="image/png" />
+<style>
+  :root { --red: #b3121b; --gold: #d4a94a; --ink: #0b0b0b; --card: #151515; --line: #2a2a2a; --fg: #f2ede4; --muted: #a39e94; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); color: var(--fg); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overscroll-behavior-y: none; }
+  header { text-align: center; padding: 40px 20px 24px; border-bottom: 3px solid var(--red); background: radial-gradient(ellipse at top, #2a0a0c 0%, var(--ink) 70%); }
+  header img { width: 120px; height: 120px; border-radius: 22px; box-shadow: 0 0 0 2px var(--gold); }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 6vw, 42px); margin: 16px 0 4px; letter-spacing: .5px; }
+  h1 span { color: var(--gold); }
+  header p { color: var(--muted); margin: 0 auto; max-width: 560px; }
+  main { max-width: 1040px; margin: 0 auto; padding: 28px 16px 48px; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  a.game { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--red); border-radius: 14px; padding: 22px; transition: transform .15s, border-color .15s; min-height: 100%; }
+  a.game:hover, a.game:focus-visible { transform: translateY(-3px); border-color: var(--gold); outline: none; }
+  a.game img { width: 96px; height: 96px; border-radius: 18px; }
+  a.game h2 { font-family: Georgia, serif; font-size: 26px; margin: 14px 0 4px; }
+  a.game p { color: var(--muted); margin: 0 0 18px; flex: 1; }
+  .play { align-self: flex-start; background: var(--red); color: #fff; font-weight: 600; padding: 12px 22px; border-radius: 10px; min-height: 44px; }
+  .tag { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+  .tip { max-width: 1040px; margin: 0 auto; padding: 0 16px 24px; color: var(--muted); font-size: 14px; }
+  .tip b { color: var(--fg); }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 20px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/studio.png" alt="Logo High Stakes Studio" width="120" height="120" />
+  <h1>High Stakes <span>Studio</span></h1>
+  <p>Jeux de gestion sérieux, en français. Gratuits, sans compte, jouables sur téléphone et ordinateur.</p>
+</header>
+<main>
+  <a class="game" href="conglomerat/" data-game="conglomerat">
+    <img src="assets/conglomerat.png" alt="" width="96" height="96" />
+    <h2>Conglomérat</h2>
+    <span class="tag">Tycoon · Québec · v1.2.2</span>
+    <p>Partez d'un dépanneur et bâtissez un empire : commerce, restauration, hôtellerie, industrie, médias, Bourse et grandes fortunes.</p>
+    <span class="play">Jouer</span>
+  </a>
+  <a class="game" href="tarifs/" data-game="tarifs">
+    <img src="assets/tarifs.png" alt="" width="96" height="96" />
+    <h2>Tarifs!</h2>
+    <span class="tag">Politique · Canada · v3.1.2</span>
+    <p>Premier ministre du Canada face aux tarifs du président Grant : ripostes, ententes, budget, défense et élections.</p>
+    <span class="play">Jouer</span>
+  </a>
+  <a class="game" href="nordic/" data-game="nordic">
+    <img src="assets/nordic.png" alt="" width="96" height="96" />
+    <h2>Nordic Resources</h2>
+    <span class="tag">Mines et pétrole · v13.5</span>
+    <p>Société minière et pétrolière : exploration, financement de projet, production, jusqu'au premier cash-flow libre.</p>
+    <span class="play">Jouer</span>
+  </a>
+</main>
+<p class="tip"><b>Sur Android :</b> ouvrez un jeu, puis menu ⋮ → « Ajouter à l'écran d'accueil » (ou « Installer l'application »). Le jeu s'ouvre alors comme une appli, fonctionne hors ligne et garde votre partie : à la réouverture, touchez « Continuer ».</p>
+<footer>© High Stakes Studio · Fiction : entreprises et personnages inventés.</footer>
+</body>
+</html>
