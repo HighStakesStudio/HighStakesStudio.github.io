@@ -1,5 +1,5 @@
-/* Service worker Conglomérat v1.2.3 — jeu hors ligne. */
-const CACHE = "hss-conglomerat-44eb2ff9b3";
+/* Service worker Conglomérat v1.3 — jeu hors ligne. */
+const CACHE = "hss-conglomerat-629f7551ba";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));

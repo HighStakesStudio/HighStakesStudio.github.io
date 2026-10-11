@@ -6,6 +6,7 @@ import { join, extname } from "node:path";
 import { tmpdir } from "node:os";
 const pw = await import(process.env.PLAYWRIGHT ?? "/workspace/conglomerat/node_modules/playwright/index.mjs");
 const { chromium } = pw.default ?? pw;
+const WANT = process.env.WANT ?? "v1.3";
 const OLD = process.argv[2], NEW = new URL("..", import.meta.url).pathname;
 let root = OLD;
 const T = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".png": "image/png", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json" };
@@ -39,11 +40,11 @@ const t0 = Date.now();
 await p.goto(url);
 await p.locator("#continuer-partie").waitFor({ timeout: 3000 });
 const ms = Date.now() - t0;
-let footer = await p.locator("text=/High Stakes Studio · v1\\.2\\./").first().innerText();
-if (!footer.includes("v1.2.3")) { await p.waitForTimeout(1500); await p.reload(); await p.locator("#continuer-partie").waitFor({ timeout: 3000 }); footer = await p.locator("text=/High Stakes Studio · v1\\.2\\./").first().innerText(); }
+let footer = await p.locator("text=/High Stakes Studio · v1\\./").first().innerText();
+if (!footer.includes(WANT)) { await p.waitForTimeout(1500); await p.reload(); await p.locator("#continuer-partie").waitFor({ timeout: 3000 }); footer = await p.locator("text=/High Stakes Studio · v1\\./").first().innerText(); }
 await p.locator("#continuer-partie").click();
 await p.waitForSelector('[data-month="3"]', { state: "attached", timeout: 4000 });
 console.log(`[upgrade] ancienne → nouvelle : Continuer en ${ms} ms, pied de page « ${footer.trim()} », partie reprise au mois 3`);
 await ctx.close();
 srv.close();
-if (!footer.includes("v1.2.3")) process.exit(1);
+if (!footer.includes(WANT)) process.exit(1);
