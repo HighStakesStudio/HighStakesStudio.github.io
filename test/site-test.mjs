@@ -72,6 +72,22 @@ const FLOWS = {
     await p.waitForSelector(`[data-month="${m0 + 1}"]`, { state: "attached" });
     return m0 + 1;
   },
+  async yukon(p) {
+    await p.getByRole("button", { name: /Nouvelle partie/i }).click();
+    await p.locator("#nom-pm").fill("Sam Okoro");
+    await p.locator("#lancer-partie").click();
+    await p.waitForSelector("[data-month]", { state: "attached" });
+    await skipTuto(p);
+    for (let i = 0; i < 5; i++) {
+      const c = p.locator("[data-event] [data-choice]:not([disabled])");
+      if (!(await c.count())) break;
+      await c.first().click();
+    }
+    const m0 = (await p.evaluate(() => window.__peek())).day;
+    await p.locator("#jour-suivant").click();
+    await p.waitForSelector(`[data-month="${m0 + 1}"]`, { state: "attached" });
+    return m0 + 1;
+  },
   async nordic(p) {
     const name = p.locator("label:has-text('Nom de la société') input");
     await name.fill("Boréale Test");
@@ -89,6 +105,7 @@ const FLOWS = {
 const CONTINUE = {
   conglomerat: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__congloPeek())).month; },
   tarifs: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__peek())).month; },
+  yukon: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__peek())).day; },
   nordic: async (p) => {
     await p.locator("[data-continue] button:has-text('Continuer la partie'), button:has-text('Continuer la partie')").first().click({ timeout: 10000 });
     await p.getByRole("button", { name: /Mois suivant/ }).first().waitFor({ timeout: 10000 });
@@ -105,16 +122,16 @@ try {
     p.on("response", (r) => r.status() >= 400 && errs.push(`${r.status()} ${r.url()}`));
     await p.goto(BASE);
     const links = await p.$$eval("a.game", (a) => a.map((x) => x.getAttribute("href")));
-    if (links.join() !== "conglomerat/,tarifs/,nordic/") fail(`liens : ${links}`);
+    if (links.join() !== "conglomerat/,tarifs/,yukon/,nordic/") fail(`liens : ${links}`);
     const imgs = await p.$$eval("img", (l) => l.every((i) => i.complete && i.naturalWidth > 0));
     if (!imgs || errs.length) fail(`accueil : images ${imgs} ${errs}`);
     const overflow = await p.evaluate(() => document.documentElement.scrollWidth > 391);
     if (overflow) fail("accueil déborde à 390 px");
     await p.screenshot({ path: join(root, "test/accueil-390.png"), fullPage: true });
-    results.push("Accueil : 3 cartes (liens relatifs), images OK, 390 px sans débordement");
+    results.push("Accueil : 4 cartes (liens relatifs), images OK, 390 px sans débordement");
     await b.close();
   }
-  for (const game of ["conglomerat", "tarifs", "nordic"]) {
+  for (const game of ["conglomerat", "tarifs", "yukon", "nordic"]) {
     const dir = mkdtempSync(join(tmpdir(), `hss-${game}-`));
     const url = `${BASE}${game}/`;
     let ctx = await chromium.launchPersistentContext(dir, opts);

@@ -22,6 +22,11 @@ const GAMES = [
     theme: "#0e1317", desc: "Premier ministre du Canada face aux tarifs du président Grant.",
   },
   {
+    dir: "yukon", name: "Ruisseau d'Or", short: "Ruisseau d'Or", version: "1.0.0",
+    html: "/workspace/yukon/dist-offline/yukon-offline.html", icons: "/workspace/yukon/public",
+    theme: "#0a111c", desc: "Survie au Yukon : tente de prospecteur, poêle à bois, chien, or du ruisseau, trois hivers.",
+  },
+  {
     dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "13.6",
     html: "/workspace/nordic-resources-v13.6.html", icons: "/workspace/nordic/public",
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
@@ -112,4 +117,5 @@ copyFileSync("/workspace/hss-logo/high-stakes-studio-icone.png", join(here, "ass
 copyFileSync("/workspace/tarifs-logo/tarifs-logo-carre.png", join(here, "assets/tarifs.png"));
 copyFileSync("/workspace/conglomerat/public/icon-512.png", join(here, "assets/conglomerat.png"));
 copyFileSync("/workspace/nordic/public/icon-512.png", join(here, "assets/nordic.png"));
+copyFileSync("/workspace/yukon/public/icon-512.png", join(here, "assets/yukon.png"));
 writeFileSync(join(here, ".nojekyll"), "");
