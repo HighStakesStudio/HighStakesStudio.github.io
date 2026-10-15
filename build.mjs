@@ -27,6 +27,11 @@ const GAMES = [
     theme: "#0a111c", desc: "Survie au Yukon : tente de prospecteur, poêle à bois, chien, or du ruisseau, trois hivers.",
   },
   {
+    dir: "hockey", name: "Mise au jeu", short: "Mise au jeu", version: "1.0.0",
+    html: "/workspace/hockey/dist-offline/hockey-offline.html", icons: "/workspace/hockey/public",
+    theme: "#07101d", desc: "Directeur général du Mont-Royal : plafond salarial, échanges, repêchage, club-école, aréna et Coupe Stanislas.",
+  },
+  {
     dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "13.6",
     html: "/workspace/nordic-resources-v13.6.html", icons: "/workspace/nordic/public",
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
@@ -118,4 +123,5 @@ copyFileSync("/workspace/tarifs-logo/tarifs-logo-carre.png", join(here, "assets/
 copyFileSync("/workspace/conglomerat/public/icon-512.png", join(here, "assets/conglomerat.png"));
 copyFileSync("/workspace/nordic/public/icon-512.png", join(here, "assets/nordic.png"));
 copyFileSync("/workspace/yukon/public/icon-512.png", join(here, "assets/yukon.png"));
+copyFileSync("/workspace/hockey/public/icon-512.png", join(here, "assets/hockey.png"));
 writeFileSync(join(here, ".nojekyll"), "");

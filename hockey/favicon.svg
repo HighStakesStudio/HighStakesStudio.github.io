@@ -1,0 +1,19 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lg-ice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf6ff" /><stop offset="1" stop-color="#bcdcf2" /></linearGradient>
+        <radialGradient id="lg-puck" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#3a4250" /><stop offset="1" stop-color="#090c11" /></radialGradient>
+      </defs>
+      <rect x="2" y="2" width="96" height="96" rx="22" fill="#0a1626" />
+      <rect x="8" y="8" width="84" height="84" rx="17" fill="url(#lg-ice)" />
+      <rect x="8" y="30" width="84" height="4" fill="#2aa7dc" opacity="0.85" />
+      <rect x="8" y="66" width="84" height="4" fill="#2aa7dc" opacity="0.85" />
+      <rect x="8" y="48" width="84" height="4" fill="#e3263a" opacity="0.8" />
+      <circle cx="50" cy="50" r="20" fill="none" stroke="#e3263a" stroke-width="2.6" />
+      <path d="M22 86 L52 40 L57 43 L30 88 Z" fill="#7a4a22" />
+      <path d="M78 86 L48 40 L43 43 L70 88 Z" fill="#a8743f" />
+      <path d="M22 86 L12 88 L14 82 Z M78 86 L88 88 L86 82 Z" fill="#111" />
+      <ellipse cx="50" cy="53" rx="13" ry="5.5" fill="#000" opacity="0.25" />
+      <ellipse cx="50" cy="50" rx="13" ry="5.5" fill="url(#lg-puck)" />
+      <rect x="37" y="45" width="26" height="5" fill="url(#lg-puck)" />
+      <ellipse cx="50" cy="45" rx="13" ry="5.5" fill="#2b313b" stroke="#4b5462" stroke-width="0.8" />
+    </svg>
