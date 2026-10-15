@@ -17,7 +17,7 @@ const GAMES = [
     theme: "#0f2340", desc: "Bâtissez un conglomérat québécois : commerce, restauration, hôtellerie, industrie, médias et finance.",
   },
   {
-    dir: "tarifs", name: "Tarifs!", short: "Tarifs!", version: "3.1.3",
+    dir: "tarifs", name: "Tarifs!", short: "Tarifs!", version: "3.2.0",
     html: "/workspace/tarifs/dist-offline/tarifs-offline.html", icons: "/workspace/tarifs/public",
     theme: "#0e1317", desc: "Premier ministre du Canada face aux tarifs du président Grant.",
   },
