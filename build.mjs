@@ -12,7 +12,7 @@ import { join } from "node:path";
 const here = new URL(".", import.meta.url).pathname;
 const GAMES = [
   {
-    dir: "conglomerat", name: "Conglomérat", short: "Conglomérat", version: "1.3",
+    dir: "conglomerat", name: "Conglomérat", short: "Conglomérat", version: "1.4",
     html: "/workspace/conglomerat/dist-offline/conglomerat-offline.html", icons: "/workspace/conglomerat/public",
     theme: "#0f2340", desc: "Bâtissez un conglomérat québécois : commerce, restauration, hôtellerie, industrie, médias et finance.",
   },
