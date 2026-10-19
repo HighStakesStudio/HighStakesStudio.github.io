@@ -1,5 +1,5 @@
-/* Service worker Mise au jeu v1.0.0 — jeu hors ligne. */
-const CACHE = "hss-hockey-580a9b2218";
+/* Service worker Mise au jeu v1.1.0 — jeu hors ligne. */
+const CACHE = "hss-hockey-3f57324145";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
