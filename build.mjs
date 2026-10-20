@@ -27,7 +27,7 @@ const GAMES = [
     theme: "#0a111c", desc: "Survie au Yukon : tente de prospecteur, poêle à bois, chien, or du ruisseau, trois hivers.",
   },
   {
-    dir: "hockey", name: "Mise au jeu", short: "Mise au jeu", version: "1.1.0",
+    dir: "hockey", name: "Mise au jeu", short: "Mise au jeu", version: "1.2.0",
     html: "/workspace/hockey/dist-offline/hockey-offline.html", icons: "/workspace/hockey/public",
     theme: "#07101d", desc: "Directeur général du Mont-Royal : plafond salarial, échanges, repêchage, club-école, aréna et Coupe Stanislas.",
   },
