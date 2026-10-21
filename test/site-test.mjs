@@ -124,6 +124,7 @@ const FLOWS = {
     });
   },
 };
+FLOWS["canada-destiny"] = FLOWS.tarifs;
 const CONTINUE = {
   conglomerat: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__congloPeek())).month; },
   tarifs: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__peek())).month; },
@@ -136,6 +137,7 @@ const CONTINUE = {
     return p.evaluate(() => JSON.parse(localStorage.getItem("nordic-resources-save")).state.game.month);
   },
 };
+CONTINUE["canada-destiny"] = CONTINUE.tarifs;
 
 try {
   // Page d'accueil.
@@ -146,16 +148,16 @@ try {
     p.on("response", (r) => r.status() >= 400 && errs.push(`${r.status()} ${r.url()}`));
     await p.goto(BASE);
     const links = await p.$$eval("a.game", (a) => a.map((x) => x.getAttribute("href")));
-    if (links.join() !== "conglomerat/,tarifs/,yukon/,hockey/,manufacture/,nordic/") fail(`liens : ${links}`);
+    if (links.join() !== "conglomerat/,tarifs/,canada-destiny/,yukon/,hockey/,manufacture/,nordic/") fail(`liens : ${links}`);
     const imgs = await p.$$eval("img", (l) => l.every((i) => i.complete && i.naturalWidth > 0));
     if (!imgs || errs.length) fail(`accueil : images ${imgs} ${errs}`);
     const overflow = await p.evaluate(() => document.documentElement.scrollWidth > 391);
     if (overflow) fail("accueil déborde à 390 px");
     await p.screenshot({ path: join(root, "test/accueil-390.png"), fullPage: true });
-    results.push("Accueil : 6 cartes (liens relatifs), images OK, 390 px sans débordement");
+    results.push("Accueil : 7 cartes (liens relatifs), images OK, 390 px sans débordement");
     await b.close();
   }
-  for (const game of ["conglomerat", "tarifs", "yukon", "hockey", "manufacture", "nordic"]) {
+  for (const game of ["conglomerat", "tarifs", "canada-destiny", "yukon", "hockey", "manufacture", "nordic"]) {
     const dir = mkdtempSync(join(tmpdir(), `hss-${game}-`));
     const url = `${BASE}${game}/`;
     let ctx = await chromium.launchPersistentContext(dir, opts);

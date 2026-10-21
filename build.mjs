@@ -22,6 +22,11 @@ const GAMES = [
     theme: "#0e1317", desc: "Premier ministre du Canada face aux tarifs du président Grant.",
   },
   {
+    dir: "canada-destiny", name: "Canada Destiny", short: "Canada Destiny", version: "1.0",
+    html: "/workspace/canada-destiny/dist-offline/canada-destiny-offline.html", icons: "/workspace/canada-destiny/public",
+    theme: "#0e1317", desc: "Premier ministre du Canada dans un monde vivant de 80 pays : géopolitique, défense, commerce, Parlement.",
+  },
+  {
     dir: "yukon", name: "Ruisseau d'Or", short: "Ruisseau d'Or", version: "1.0.0",
     html: "/workspace/yukon/dist-offline/yukon-offline.html", icons: "/workspace/yukon/public",
     theme: "#0a111c", desc: "Survie au Yukon : tente de prospecteur, poêle à bois, chien, or du ruisseau, trois hivers.",
@@ -130,4 +135,5 @@ copyFileSync("/workspace/nordic/public/icon-512.png", join(here, "assets/nordic.
 copyFileSync("/workspace/yukon/public/icon-512.png", join(here, "assets/yukon.png"));
 copyFileSync("/workspace/hockey/public/icon-512.png", join(here, "assets/hockey.png"));
 copyFileSync("/workspace/manufacture/public/icon-512.png", join(here, "assets/manufacture.png"));
+copyFileSync("/workspace/canada-destiny/public/icon-512.png", join(here, "assets/canada-destiny.png"));
 writeFileSync(join(here, ".nojekyll"), "");
