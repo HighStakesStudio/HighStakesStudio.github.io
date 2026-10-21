@@ -32,6 +32,11 @@ const GAMES = [
     theme: "#07101d", desc: "Directeur général du Mont-Royal : plafond salarial, échanges, repêchage, club-école, aréna et Coupe Stanislas.",
   },
   {
+    dir: "manufacture", name: "Manufacture", short: "Manufacture", version: "1.0",
+    html: "/workspace/manufacture/dist-offline/manufacture-offline.html", icons: "/workspace/manufacture/public",
+    theme: "#121315", desc: "De la petite usine de Drummondville à la multinationale : lignes, marques maison, logistique, rachats de rivaux.",
+  },
+  {
     dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "13.6",
     html: "/workspace/nordic-resources-v13.6.html", icons: "/workspace/nordic/public",
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
@@ -124,4 +129,5 @@ copyFileSync("/workspace/conglomerat/public/icon-512.png", join(here, "assets/co
 copyFileSync("/workspace/nordic/public/icon-512.png", join(here, "assets/nordic.png"));
 copyFileSync("/workspace/yukon/public/icon-512.png", join(here, "assets/yukon.png"));
 copyFileSync("/workspace/hockey/public/icon-512.png", join(here, "assets/hockey.png"));
+copyFileSync("/workspace/manufacture/public/icon-512.png", join(here, "assets/manufacture.png"));
 writeFileSync(join(here, ".nojekyll"), "");
