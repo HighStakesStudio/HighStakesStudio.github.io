@@ -1,5 +1,5 @@
-/* Service worker Canada Destiny v1.2 — jeu hors ligne. */
-const CACHE = "hss-canada-destiny-b57ba75869";
+/* Service worker Canada Destiny v1.2.1 — jeu hors ligne. */
+const CACHE = "hss-canada-destiny-78fd49f20f";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));

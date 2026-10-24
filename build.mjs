@@ -22,7 +22,7 @@ const GAMES = [
     theme: "#0e1317", desc: "Premier ministre du Canada face aux tarifs du président Grant.",
   },
   {
-    dir: "canada-destiny", name: "Canada Destiny", short: "Canada Destiny", version: "1.2",
+    dir: "canada-destiny", name: "Canada Destiny", short: "Canada Destiny", version: "1.2.1",
     html: "/workspace/canada-destiny/dist-offline/canada-destiny-offline.html", icons: "/workspace/canada-destiny/public",
     theme: "#0e1317", desc: "Premier ministre du Canada dans un monde vivant de 80 pays : géopolitique, défense, commerce, Parlement.",
   },
