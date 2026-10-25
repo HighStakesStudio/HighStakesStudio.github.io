@@ -124,7 +124,22 @@ const FLOWS = {
     });
   },
 };
-FLOWS["canada-destiny"] = FLOWS.tarifs;
+// Canada Destiny v1.2.2 : mode simple par défaut (cartes de décision + « Prochain mois »).
+FLOWS["canada-destiny"] = async (p) => {
+  await p.getByRole("button", { name: /Nouvelle partie/i }).click();
+  await p.locator("#nom-pm").fill("Sam Okoro");
+  await p.locator("#lancer-partie").click();
+  await p.waitForSelector("[data-month]", { state: "attached" });
+  await skipTuto(p);
+  const m0 = (await p.evaluate(() => window.__peek())).month;
+  for (let i = 0; i < 6 && !(await p.locator("#prochain-mois").isEnabled()); i++) {
+    await p.locator("[data-decision] [data-recommend]").first().click();
+    await p.waitForTimeout(300);
+  }
+  await p.locator("#prochain-mois").click();
+  await p.waitForSelector(`[data-month="${m0 + 1}"]`, { state: "attached" });
+  return m0 + 1;
+};
 const CONTINUE = {
   conglomerat: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__congloPeek())).month; },
   tarifs: async (p) => { await p.locator("#continuer-partie").click({ timeout: 10000 }); await p.waitForSelector("[data-month]", { state: "attached" }); return (await p.evaluate(() => window.__peek())).month; },
