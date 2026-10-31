@@ -1,7 +1,7 @@
 /* Service worker FIX — jeu hors ligne. Source versionnée : fix/public/sw.js.
  * Le jeton de cache (ligne CACHE) est remplacé à la publication (hss-site/build.mjs) par « hss-fix-v<version>-<empreinte> ».
  * Règle : on ne met JAMAIS en cache une réponse en erreur (404, 500…) : `if (r.ok)` avant chaque cache.put. */
-const CACHE = "hss-fix-v1.2.3-bdb54e6da7";
+const CACHE = "hss-fix-v1.3.0-bb214b0bf9";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));

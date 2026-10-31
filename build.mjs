@@ -47,7 +47,7 @@ const GAMES = [
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
   },
   {
-    dir: "fix", name: "FIX", short: "FIX", version: "1.2.3",
+    dir: "fix", name: "FIX", short: "FIX", version: "1.3.0",
     html: "/workspace/fix/dist-offline/fix-offline.html", icons: "/workspace/fix/public",
     theme: "#0d0718", desc: "Du club vidéo de 1985 au géant du streaming de 2025 : cassettes, DVD, service en ligne, studio et direct.",
   },
