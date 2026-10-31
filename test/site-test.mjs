@@ -88,6 +88,17 @@ const FLOWS = {
     await p.waitForSelector(`[data-month="${m0 + 1}"]`, { state: "attached" });
     return m0 + 1;
   },
+  async fix(p) {
+    await p.getByRole("button", { name: /Nouvelle partie/i }).click();
+    await p.locator("#nom-pm").fill("Sam Okoro");
+    await p.locator("#lancer-partie").click();
+    await p.waitForSelector("[data-month]", { state: "attached" });
+    await skipTuto(p);
+    const m0 = (await p.evaluate(() => window.__peek())).month;
+    await p.locator("#mois-suivant").click();
+    await p.waitForSelector(`[data-month="${m0 + 1}"]`, { state: "attached" });
+    return m0 + 1;
+  },
   async hockey(p) {
     await p.getByRole("button", { name: /Nouvelle partie/i }).click();
     await p.locator("#nom-pm").fill("Sam Okoro");
@@ -153,6 +164,7 @@ const CONTINUE = {
   },
 };
 CONTINUE["canada-destiny"] = CONTINUE.tarifs;
+CONTINUE.fix = CONTINUE.manufacture;
 
 try {
   // Page d'accueil.
@@ -163,16 +175,16 @@ try {
     p.on("response", (r) => r.status() >= 400 && errs.push(`${r.status()} ${r.url()}`));
     await p.goto(BASE);
     const links = await p.$$eval("a.game", (a) => a.map((x) => x.getAttribute("href")));
-    if (links.join() !== "conglomerat/,tarifs/,canada-destiny/,yukon/,hockey/,manufacture/,nordic/") fail(`liens : ${links}`);
+    if (links.join() !== "conglomerat/,tarifs/,canada-destiny/,yukon/,hockey/,manufacture/,nordic/,fix/") fail(`liens : ${links}`);
     const imgs = await p.$$eval("img", (l) => l.every((i) => i.complete && i.naturalWidth > 0));
     if (!imgs || errs.length) fail(`accueil : images ${imgs} ${errs}`);
     const overflow = await p.evaluate(() => document.documentElement.scrollWidth > 391);
     if (overflow) fail("accueil déborde à 390 px");
     await p.screenshot({ path: join(root, "test/accueil-390.png"), fullPage: true });
-    results.push("Accueil : 7 cartes (liens relatifs), images OK, 390 px sans débordement");
+    results.push("Accueil : 8 cartes (liens relatifs), images OK, 390 px sans débordement");
     await b.close();
   }
-  for (const game of ["conglomerat", "tarifs", "canada-destiny", "yukon", "hockey", "manufacture", "nordic"]) {
+  for (const game of ["conglomerat", "tarifs", "canada-destiny", "yukon", "hockey", "manufacture", "nordic", "fix"]) {
     const dir = mkdtempSync(join(tmpdir(), `hss-${game}-`));
     const url = `${BASE}${game}/`;
     let ctx = await chromium.launchPersistentContext(dir, opts);
