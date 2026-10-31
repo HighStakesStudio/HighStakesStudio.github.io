@@ -47,7 +47,7 @@ const GAMES = [
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
   },
   {
-    dir: "fix", name: "FIX", short: "FIX", version: "1.1.0",
+    dir: "fix", name: "FIX", short: "FIX", version: "1.1.1",
     html: "/workspace/fix/dist-offline/fix-offline.html", icons: "/workspace/fix/public",
     theme: "#0d0718", desc: "Du club vidéo de 1985 au géant du streaming de 2025 : cassettes, DVD, service en ligne, studio et direct.",
   },
@@ -126,9 +126,13 @@ for (const g of GAMES) {
       { src: "./icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   };
-  writeFileSync(join(out, "manifest.webmanifest"), JSON.stringify(manifest, null, 2));
   const hash = createHash("sha1").update(html).digest("hex").slice(0, 10);
-  writeFileSync(join(out, "sw.js"), sw(g, hash));
+  // Un jeu peut versionner son propre sw.js / manifest.webmanifest (dossier public) : ils priment sur les gabarits.
+  const ownSw = join(g.icons, "sw.js"), ownManifest = join(g.icons, "manifest.webmanifest");
+  if (existsSync(ownManifest)) copyFileSync(ownManifest, join(out, "manifest.webmanifest"));
+  else writeFileSync(join(out, "manifest.webmanifest"), JSON.stringify(manifest, null, 2));
+  if (existsSync(ownSw)) writeFileSync(join(out, "sw.js"), readFileSync(ownSw, "utf8").replace('const CACHE = "__CACHE__"', `const CACHE = "hss-${g.dir}-v${g.version}-${hash}"`));
+  else writeFileSync(join(out, "sw.js"), sw(g, hash));
   console.log(`[site] ${g.dir}/ v${g.version} (${Math.round(html.length / 1024)} Ko)`);
 }
 mkdirSync(join(here, "assets"), { recursive: true });
