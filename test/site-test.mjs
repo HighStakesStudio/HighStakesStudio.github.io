@@ -175,13 +175,13 @@ try {
     p.on("response", (r) => r.status() >= 400 && errs.push(`${r.status()} ${r.url()}`));
     await p.goto(BASE);
     const links = await p.$$eval("a.game", (a) => a.map((x) => x.getAttribute("href")));
-    if (links.join() !== "conglomerat/,tarifs/,canada-destiny/,yukon/,hockey/,manufacture/,nordic/,fix/") fail(`liens : ${links}`);
+    if (links.join() !== "conglomerat/,tarifs/,canada-destiny/,yukon/,hockey/,manufacture/,nordic/,fix/,ferme/") fail(`liens : ${links}`);
     const imgs = await p.$$eval("img", (l) => l.every((i) => i.complete && i.naturalWidth > 0));
     if (!imgs || errs.length) fail(`accueil : images ${imgs} ${errs}`);
     const overflow = await p.evaluate(() => document.documentElement.scrollWidth > 391);
     if (overflow) fail("accueil déborde à 390 px");
     await p.screenshot({ path: join(root, "test/accueil-390.png"), fullPage: true });
-    results.push("Accueil : 8 cartes (liens relatifs), images OK, 390 px sans débordement");
+    results.push("Accueil : 9 cartes (liens relatifs), images OK, 390 px sans débordement");
     await b.close();
   }
   for (const game of ["conglomerat", "tarifs", "canada-destiny", "yukon", "hockey", "manufacture", "nordic", "fix"]) {
