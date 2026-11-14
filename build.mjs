@@ -52,7 +52,7 @@ const GAMES = [
     theme: "#0d0718", desc: "Du club vidéo de 1985 au géant du streaming de 2025 : cassettes, DVD, service en ligne, studio et direct.",
   },
   {
-    dir: "ferme", name: "Ferme", short: "Ferme", version: "0.1",
+    dir: "ferme", name: "Ferme", short: "Ferme", version: "0.2",
     html: "/workspace/ferme/dist-offline/ferme-offline.html", icons: "/workspace/ferme/public",
     theme: "#1f3a1a", desc: "De la fermette à l'empire agricole : cultures, élevage, transformation, marques et fermes partout dans le monde.",
   },
