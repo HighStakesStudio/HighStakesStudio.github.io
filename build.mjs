@@ -42,8 +42,8 @@ const GAMES = [
     theme: "#121315", desc: "De la petite usine de Drummondville à la multinationale : lignes, marques maison, logistique, rachats de rivaux.",
   },
   {
-    dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "14.1",
-    html: "/workspace/nordic-resources-v14.1.html", icons: "/workspace/nordic/public",
+    dir: "nordic", name: "Nordic Resources", short: "Nordic", version: "15.0",
+    html: "/workspace/nordic-resources-v15.0.html", icons: "/workspace/nordic/public",
     theme: "#14140f", desc: "Société minière et pétrolière : du capital de départ au premier cash-flow libre.",
   },
   {
