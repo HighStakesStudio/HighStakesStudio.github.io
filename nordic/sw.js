@@ -1,5 +1,5 @@
-/* Service worker Nordic Resources v15.2 — jeu hors ligne. */
-const CACHE = "hss-nordic-366f604d83";
+/* Service worker Nordic Resources v15.3 — jeu hors ligne. */
+const CACHE = "hss-nordic-f4f26cb2e1";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
